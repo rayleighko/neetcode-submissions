@@ -1,0 +1,15 @@
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        # day 1 - watch solution - don't use sorting, because sorting's Time Compexity is O(nlogn). we will better or same O(n).
+        numSet = set(nums)
+        longest = 0
+
+        for n in nums:
+            # check if its the start of a sequence
+            if not (n - 1) in numSet:
+                length = 0
+                while (n + length) in numSet:
+                    length += 1
+                longest = max(length, longest)
+
+        return longest
